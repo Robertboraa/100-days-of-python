@@ -1,6 +1,8 @@
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 import random
 import string
+from tkinter import *
+from tkinter import messagebox
 
 
 def generate_password():
@@ -20,25 +22,56 @@ def generate_password():
 
     password_entry.insert(0, f"{''.join(password)}")
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
-import pandas
+
+import json
+
+
+def search():
+    website = website_entry.get()
+
+    try:
+        with open("passwords.json", "r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        messagebox.showinfo("Error", "No passwords saved yet.")
+        return
+
+    if website in data:
+        email = data[website]["email"]
+        password = data[website]["password"]
+        messagebox.showinfo(website, f"Email: {email}\nPassword: {password}")
+    else:
+        messagebox.showinfo("Not Found", f"No details for {website}.")
 
 def save():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
 
-    new_data = {"website": [website], "email": [email], "password": [password]}
-    df = pandas.DataFrame(new_data)
-    df.to_csv("passwords.csv", mode="a", header=False, index=False)
+    new_data = {
+        website: {
+            "email": email,
+            "password": password
+        }
+    }
+
+    try:
+        with open("passwords.json", "r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        data = {}
+
+    data.update(new_data)
+
+    with open("passwords.json", "w") as f:
+        json.dump(data, f, indent=4)
+
     website_entry.delete(0, END)
     password_entry.delete(0, END)
     email_entry.delete(0, END)
     website_entry.focus()
-# ---------------------------- UI SETUP ------------------------------- #
-from tkinter import *
 
-# ---------------------------- UI SETUP ------------------------------- #
+
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50 )
@@ -77,4 +110,7 @@ generate_button.grid(row=3, column=2 )
 # Add Button
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
+# Search Button
+search_button = Button(text="Search", width=10, height=1,command=search)
+search_button.grid(row=1, column=2, columnspan=1)
 window.mainloop()
