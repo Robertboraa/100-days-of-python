@@ -1,63 +1,60 @@
 # 100 Days of Python 🐍
 
-A daily coding journal following **Dr. Angela Yu's [100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/)** on Udemy.
-
-The goal: write Python every day for 100 days, committing each project to this repo.
-
----
-
-## Progress
-
-| Day | Project | Topics Covered |
-|-----|---------|----------------|
-| 1–15 | Beginner projects | Variables, data types, loops, functions, conditionals, OOP intro |
-| 16 | Coffee Machine (OOP) | Object-oriented programming, classes, methods |
-| 17 | Quiz Brain | OOP, class design, encapsulation |
-| 18 | Hirst Painting | Turtle graphics, `colorgram`, loops, RGB colours |
-| 19 | Turtle Racing Game | Turtle GUI, instances, higher-order functions, events |
-| 20–21 | Snake Game | OOP inheritance, list slicing, animation, game loop |
-| 22 | Pong Game | Multiple classes, collision detection, scoreboard |
-| 23 | Turtle Crossing | Capstone — OOP, random movement, difficulty scaling |
-| 24 | Snake High Score + Mail Merge | File I/O, reading/writing files, data persistence |
+Daily Python projects following Angela Yu's 100 Days of Code course.
+Each day is a self-contained project pushed to this repo.
 
 ---
 
-## Topics covered so far
-
-- Python fundamentals — variables, data types, loops, functions, conditionals
-- Randomisation and list manipulation
-- Dictionaries and nested data structures
-- Scope and debugging
-- Object-oriented programming — classes, inheritance, encapsulation
-- Turtle graphics and GUI basics
-- File I/O and data persistence
-
-## Coming up
-
-- Error handling and exceptions
-- APIs and HTTP requests
-- Web scraping with BeautifulSoup
-- Data science with Pandas and Matplotlib
-- Backend web development with Flask
-- Databases and SQL
-- Automation with Selenium
+## Days 1–15 — Python Fundamentals
+Variables, data types, loops, functions, conditionals, string manipulation, and basic logic.
 
 ---
 
-## About this course
+## Days 16–38 — Intermediate Python
 
-One of the most comprehensive Python courses available — covering everything from Python basics to backend web development, data science, automation, and machine learning. Each day introduces a new concept through a hands-on project.
-
-## Why I'm doing this
-
-I'm based in London and working toward a backend Python software engineering role. This challenge is part of my daily practice to build consistency, deepen my Python knowledge, and grow a public portfolio.
-
-## Repo structure
-
-Each day's work lives in its own folder, containing the project files and any assets used.
+| Day | Project |
+|-----|---------|
+| 16 | Coffee Machine — OOP version |
+| 17 | Quiz Brain — OOP quiz game |
+| 18 | Hirst Painting — turtle graphics dot art |
+| 19 | Turtle Racing Game — bet on turtles |
+| 20–21 | Snake Game — classic snake with Tkinter |
+| 22 | Pong Game — two-player pong |
+| 23 | Turtle Crossing Game — frogger-style |
+| 24 | Snake High Score — persistent score with file I/O |
+| 25 | US States Game — geography quiz with turtle |
+| 26 | NATO Alphabet — CSV to dict converter |
+| 27 | Miles to KM Converter — Tkinter GUI |
+| 28 | Pomodoro Timer — Tkinter productivity timer |
+| 29 | Password Manager — Tkinter app with file storage |
+| 30 | Password Manager — added search functionality |
+| 31 | Flash Card App — French vocab with Tkinter |
+| 32 | Birthday Wisher — automated email sender with CSV |
+| 33 | ISS Overhead Notifier — API + email alert |
+| 34 | Quiz App — trivia API + Tkinter |
+| 35 | Rain Alert — weather API + WhatsApp via Twilio |
+| 36 | Stock News Alert — finance API + SMS via Twilio |
+| 37 | Habit Tracker — Pixela API + graph tracking |
+| 38 | Workout Tracker — Nutritionix API + Sheety |
 
 ---
 
-## Connect
+## Days 39–50 — Web Scraping, Selenium & Automation
 
-- GitHub: [github.com/Robertboraa](https://github.com/Robertboraa)
+| Day | Project |
+|-----|---------|
+| 39–40 | Flight Club — multi-file OOP flight price alert system. Scrapes Tequila/Kiwi API, compares against Google Sheets via Sheety, sends WhatsApp alerts via Twilio and emails to customer list |
+| 41 | Introduction to HTML |
+| 42 | Intermediate HTML — birthday invite website |
+| 43 | Basic CSS — colour vocabulary website |
+| 44 | CSS — motivational poster website |
+| 45 | Web Scraping with BeautifulSoup — scraped movie list to .txt |
+| 46 | Spotify Playlist Generator — scrapes Billboard Hot 100, creates Spotify playlist via Spotipy API |
+| 47 | Amazon Price Tracker — BeautifulSoup scraper with email alert when price drops |
+| 48 | Selenium Basics — browser automation, CSS selectors, dynamic content scraping |
+| 49 | Selenium — automated login and page navigation |
+| 50 | Selenium — automated Tinder swiper bot (Tindog) |
+
+---
+
+*Updated regularly. 50 days down, 50 to go.*
