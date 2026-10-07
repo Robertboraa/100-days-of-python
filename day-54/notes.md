@@ -1,4 +1,5 @@
-# Day 54: Web Scraping Capstone - Research Notes
+# Day 54: Flask - Research Notes
 
 ## Topic
-Capstone project combining BeautifulSoup and Selenium to scrape and automate data entry.
+Introduction to Flask — Python web framework for building web apps and APIs.
+Will continue building tomorrow.
