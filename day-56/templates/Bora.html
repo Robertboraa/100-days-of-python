@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bora Robert Orhan</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero fade-in">
+        <img src="/static/profile.jpg" alt="Bora Robert Orhan">
+        <h1>Bora Robert Orhan</h1>
+        <p>Software Engineer · London, UK</p>
+        <div class="links">
+            <a href="mailto:robert.bora@hotmail.com?subject=Hello Bora&body=Hi Bora, I wanted to reach out...">Contact Me</a>
+            <a href="https://github.com/Robertboraa" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="card slide-up">
+        <h2>About</h2>
+        <p>Final-year Software Engineering student building API-driven applications, automation tools, and computer vision systems. Currently 56 days into Angela Yu's 100 Days of Code — shipping a new Python project every day.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="card slide-up">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Gym Movement Form Analyser</h3>
+            <p>Real-time computer vision app using OpenCV and MediaPipe to track movements and evaluate exercise form.</p>
+        </div>
+        <div class="project">
+            <h3>Flight Club</h3>
+            <p>Automated flight price alert system using Tequila API, Twilio WhatsApp, and Google Sheets via Sheety.</p>
+        </div>
+        <div class="project">
+            <h3>Amazon Price Tracker</h3>
+            <p>BeautifulSoup scraper that monitors product prices and sends email alerts when they drop.</p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="card slide-up">
+        <h2>Skills</h2>
+        <div class="skills">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>REST APIs</span>
+            <span>Selenium</span>
+            <span>BeautifulSoup</span>
+            <span>OpenCV</span>
+            <span>PyTorch</span>
+            <span>Git</span>
+            <span>HTML & CSS</span>
+            <span>SQL</span>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="card slide-up">
+        <h2>Education</h2>
+        <div class="project">
+            <h3>BSc Software Engineering</h3>
+            <p>Bahçeşehir University, Istanbul · Expected Jan 2027</p>
+        </div>
+        <div class="project">
+            
+        </div>
+    </section>
+
+    <footer class="slide-up">
+        <p>© 2026 Bora Robert Orhan</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.slide-up, .fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
