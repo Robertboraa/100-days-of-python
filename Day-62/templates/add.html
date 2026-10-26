@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!--Don't forget your import here-->
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Add a new cafe into the database</h1>
+
+      <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.cafe.label }} {{ form.cafe() }}<br>
+    {{ form.location.label }} {{ form.location() }}<br>
+    {{ form.open_time.label }} {{ form.open_time() }}<br>
+    {{ form.close_time.label }} {{ form.close_time() }}<br>
+    {{ form.coffee_rating.label }} {{ form.coffee_rating() }}<br>
+    {{ form.wifi_rating.label }} {{ form.wifi_rating() }}<br>
+    {{ form.power_rating.label }} {{ form.power_rating() }}<br>
+    {{ form.submit() }}
+</form>
+
+	  <p class="space-above"><a href="#">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
