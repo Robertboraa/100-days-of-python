@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Select Movie{% endblock %}
+{% block content %}
+<div class="container" style="max-width: 500px; margin-top: 50px;">
+    <h1>Select a Movie</h1>
+    <ul class="list-group">
+        {% for movie in movies %}
+        <a href="/find/{{ movie.id }}" class="list-group-item list-group-item-action">
+            {{ movie.title }} ({{ movie.year }})
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
