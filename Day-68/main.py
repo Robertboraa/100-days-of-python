@@ -7,8 +7,12 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-# CREATE DATABASE
+@login_manager.user_loader
+def load_user(user_id):
+    return db.get_or_404(User, user_id)
 
 
 class Base(DeclarativeBase):
@@ -22,7 +26,7 @@ db.init_app(app)
 # CREATE TABLE IN DB
 
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
@@ -38,35 +42,72 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/register',methods=['POST','GET'])
+@app.route('/register', methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
-        new_user = User(email=request.form.get("email"),
-                        name=request.form.get("name"),
-                        password=request.form.get('password'))
+    if request.method == "POST":
+        email = request.form.get('email')
+        result = db.session.execute(db.select(User).where(User.email == email))
+        # Note, email in db is unique so will only have one result.
+        user = result.scalar()
+        if user:
+            # User already exists
+            flash("You've already signed up with that email, log in instead!")
+            return redirect(url_for('login'))
+
+        hash_and_salted_password = generate_password_hash(
+            request.form.get('password'),
+            method='pbkdf2:sha256',
+            salt_length=8
+        )
+        new_user = User(
+            email=request.form.get('email'),
+            password=hash_and_salted_password,
+            name=request.form.get('name'),
+        )
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('secrets',name=new_user.name))
-    return render_template("register.html")
+        login_user(new_user)
+        return redirect(url_for("secrets"))
+    return render_template("register.html", logged_in=current_user.is_authenticated)
 
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        result = db.session.execute(db.select(User).where(User.email == email))
+        user = result.scalar()
+        # Email doesn't exist or password incorrect.
+        if not user:
+            flash("That email does not exist, please try again.")
+            return redirect(url_for('login'))
+        elif not check_password_hash(user.password, password):
+            flash('Password incorrect, please try again.')
+            return redirect(url_for('login'))
+        else:
+            login_user(user)
+            return redirect(url_for('secrets'))
+
+    return render_template("login.html",logged_in=current_user.is_authenticated)
 
 
 @app.route('/secrets')
+@login_required
 def secrets():
-    name = request.args.get('name')
-    return render_template("secrets.html",name=name)
+
+    return render_template("secrets.html",name=current_user.name,logged_in=True)
 
 
 @app.route('/logout')
 def logout():
-    pass
+    logout_user()
+    return redirect(url_for('home'))
 
 
 @app.route('/download')
+@login_required
 def download():
     return send_from_directory('static/files', 'cheat_sheet.pdf')
 
